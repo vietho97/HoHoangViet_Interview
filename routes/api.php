@@ -27,12 +27,11 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/refresh', 'refresh');
 });
 
+Route::middleware(['basicAuth'])->get('/user/{username}',[UserController::class, 'show']);
+
 Route::controller(UserController::class)->group(function () {
     Route::get('/', 'index');
-    Route::get('/user/{username}', 'show');
     Route::put('/user/{username}', 'update');
     Route::post('/user/{username}/avatar', 'upload');
-    // Route::get('/user/{username}', 'show');
 });
 
-Route::get('/user/{username}', [UserController::class, 'show'])->middleware(['auth.basic','auth:api']);

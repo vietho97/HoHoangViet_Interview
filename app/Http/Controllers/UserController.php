@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use App\Models\User;
 use App\Repository\UserRepositoryInterface;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UploadRequest;
 
 class UserController extends Controller
 {
@@ -37,12 +38,11 @@ class UserController extends Controller
         return response()->json(['data' => $users], Response::HTTP_OK);
     }
 
-    public function upload(Request $request, $username)
+    public function upload(UploadRequest $request, $username)
     {
-        if($request->hasFile('image')){
-            $filename = $request->image->getClientOriginalName();
-            $request->image->storeAs('images',$filename,'public');
-            Auth()->user()->update(['image'=>$filename]);
-        }
+        $filename = $request->file->getClientOriginalName();
+        $request->file->storeAs('images',$filename,'public');
+        Auth()->user()->update(['avatar'=>$filename]);
+        return response()->json(['data' => true], Response::HTTP_OK);
     }
 }
