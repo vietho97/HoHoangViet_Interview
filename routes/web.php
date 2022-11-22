@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlgorithmController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use App\Http\Controllers\AlgorithmController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::controller(AlgorithmController::class)->group(function () {
     // Question 1: Implement an ATM algorithm to serve a requested amount and use a
