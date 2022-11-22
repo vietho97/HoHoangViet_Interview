@@ -19,6 +19,9 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        if ($request->isMethod('get')) {
+            return view('auth.login');
+        }
         $validator = Validator::make($request->json()->all(), [
             'username' => 'required|string',
             'password' => 'required|string',
@@ -54,6 +57,9 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        if ($request->isMethod('get')) {
+            return view('auth.register');
+        }
         $validator = Validator::make($request->json()->all(), [
             'username' => 'required|string|max:100|unique:users',
             'hobbies' => 'string|max:100',
