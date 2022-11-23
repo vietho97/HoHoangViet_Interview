@@ -40,7 +40,7 @@ export default {
         TopbarComponent,
     },
     mounted() {
-        console.log("Component mounted.");
+        
     },
 };
 </script>

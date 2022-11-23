@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function __construct(UserRepositoryInterface $userRepositoryInterface)
     {
-        $this->middleware('auth:api', ['except' => ['index','show']]);
+        $this->middleware('auth:api', ['except' => ['show']]);
         $this->userRepository = $userRepositoryInterface;
     }
 

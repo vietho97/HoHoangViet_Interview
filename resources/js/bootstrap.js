@@ -14,6 +14,15 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.baseURL = 'http://127.0.0.1:8000';
+const token = localStorage.getItem('token');
+axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+
+axios.interceptors.response.use(function (response) {
+    console.log(response,'response');
+    return response;
+  }, function (error) {
+    return Promise.reject(error);
+  });
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

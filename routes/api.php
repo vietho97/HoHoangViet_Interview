@@ -30,7 +30,7 @@ Route::controller(AuthController::class)->group(function () {
 Route::middleware(['basicAuth'])->get('/user/{username}',[UserController::class, 'show']);
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/', 'index');
+    Route::get('/user', 'index');
     Route::put('/user/{username}', 'update');
     Route::post('/user/{username}/avatar', 'upload');
 });

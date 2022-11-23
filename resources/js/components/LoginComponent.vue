@@ -123,7 +123,9 @@ export default {
                 const response = await axios.post("/api/login", form);
                 const { data } = response;
                 const { authorisation, user, status } = data;
-                if (status == 'success') {
+                if (status == "success") {
+                    const { token } = authorisation;
+                    localStorage.setItem("token", token);
                     window.location.href = authorisation.url;
                 }
             } catch (error) {
