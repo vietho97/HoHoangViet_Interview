@@ -111,12 +111,13 @@
 
 <script>
 export default {
-    data: {
-        users: [],
+    data() {
+        return {
+            users: [],
+        }
     },
     mounted() {
         this.getUser();
-        console.log(this.users,'ascsacsac');
     },
     methods: {
         async getUser() {
@@ -127,7 +128,6 @@ export default {
                     window.location.href = '/login'
                 }
                 this.users = data['data'];
-                console.log(this.users,'this.users');
             } catch (error) {
                 console.error(error);
             }
