@@ -21,10 +21,14 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('master-component', require('./components/LoginComponent.vue').default);
-Vue.component('login-component', require('./components/MasterComponent.vue').default);
+Vue.component('master-component', require('./components/MasterComponent.vue').default);
+Vue.component('login-component', require('./components/LoginComponent.vue').default);
 Vue.component('register-component', require('./components/RegisterComponent.vue').default);
+
+Vue.component('content-component', require('./components/layout/ContentComponent.vue').default);
+Vue.component('footer-component', require('./components/layout/FooterComponent.vue').default);
+Vue.component('sidebar-component', require('./components/layout/SidebarComponent.vue').default);
+Vue.component('topbar-component', require('./components/layout/TopbarComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

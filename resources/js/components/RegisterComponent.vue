@@ -114,9 +114,9 @@ export default {
     watch: {},
     methods: {
         registerAccount() {
-            this.getUser(this.form);
+            this.handleRegister(this.form);
         },
-        async getUser(form) {
+        async handleRegister(form) {
             try {
                 const response = await axios.post("/api/register", form);
                 console.log(response);

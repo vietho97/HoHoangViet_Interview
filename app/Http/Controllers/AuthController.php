@@ -22,6 +22,7 @@ class AuthController extends Controller
         if ($request->isMethod('get')) {
             return view('auth.login');
         }
+
         $validator = Validator::make($request->json()->all(), [
             'username' => 'required|string',
             'password' => 'required|string',
@@ -51,6 +52,7 @@ class AuthController extends Controller
             'authorisation' => [
                 'token' => $token,
                 'type' => 'bearer',
+                'url' => '/home',
             ]
         ]);
     }

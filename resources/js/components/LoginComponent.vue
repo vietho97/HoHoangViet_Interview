@@ -24,7 +24,8 @@
                                                 class="form-control form-control-user"
                                                 id="exampleInputEmail"
                                                 aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..."
+                                                v-model="form.username"
+                                                placeholder="Enter User Name"
                                             />
                                         </div>
                                         <div class="form-group">
@@ -32,6 +33,7 @@
                                                 type="password"
                                                 class="form-control form-control-user"
                                                 id="exampleInputPassword"
+                                                v-model="form.password"
                                                 placeholder="Password"
                                             />
                                         </div>
@@ -52,8 +54,9 @@
                                             </div>
                                         </div>
                                         <a
-                                            href="index.html"
+                                            href="#"
                                             class="btn btn-primary btn-user btn-block"
+                                            @click="loginAccount"
                                         >
                                             Login
                                         </a>
@@ -100,8 +103,33 @@
 
 <script>
 export default {
-    mounted() {
-        console.log("Component mounted.");
+    data() {
+        return {
+            form: {
+                username: "",
+                password: "",
+            },
+        };
+    },
+    mounted() {},
+    computed: {},
+    watch: {},
+    methods: {
+        loginAccount() {
+            this.handleLogin(this.form);
+        },
+        async handleLogin(form) {
+            try {
+                const response = await axios.post("/api/login", form);
+                const { data } = response;
+                const { authorisation, user, status } = data;
+                if (status == 'success') {
+                    window.location.href = authorisation.url;
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        },
     },
 };
 </script>
