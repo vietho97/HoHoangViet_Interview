@@ -111,9 +111,7 @@ export default {
             },
         };
     },
-    mounted() {},
-    computed: {},
-    watch: {},
+
     methods: {
         loginAccount() {
             this.handleLogin(this.form);

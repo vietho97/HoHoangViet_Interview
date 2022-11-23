@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function __construct(UserRepositoryInterface $userRepositoryInterface)
     {
-        $this->middleware('auth:api', ['except' => ['show']]);
+        $this->middleware('auth:api',['except' => ['detail']]);
         $this->userRepository = $userRepositoryInterface;
     }
 
@@ -33,6 +33,7 @@ class UserController extends Controller
 
     public function update(UserRequest $request, $username)
     {
+        return $request;
         $input = $request->getAttributes();
         $users = $this->userRepository->updateWhere(['username' => $username], $input);
         return response()->json(['data' => $users], Response::HTTP_OK);
@@ -44,5 +45,11 @@ class UserController extends Controller
         $request->file->storeAs('images',$filename,'public');
         Auth()->user()->update(['avatar'=>$filename]);
         return response()->json(['data' => true], Response::HTTP_OK);
+    }
+
+    public function detail($username)
+    {
+        $user = $this->userRepository->firstWhere(['username' => $username]);
+        return view('layout.detail', ['user' => $user]);
     }
 }

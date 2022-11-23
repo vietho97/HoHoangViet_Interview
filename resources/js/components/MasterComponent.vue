@@ -1,7 +1,7 @@
 <template>
     <div id="wrapper">
         <!-- Sidebar -->
-        <SidebarComponent />
+        <!-- <SidebarComponent /> -->
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -19,7 +19,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <FooterComponent />
+            <!-- <FooterComponent /> -->
             <!-- End of Footer -->
         </div>
         <!-- End of Content Wrapper -->

@@ -29,6 +29,7 @@ Vue.component('content-component', require('./components/layout/ContentComponent
 Vue.component('footer-component', require('./components/layout/FooterComponent.vue').default);
 Vue.component('sidebar-component', require('./components/layout/SidebarComponent.vue').default);
 Vue.component('topbar-component', require('./components/layout/TopbarComponent.vue').default);
+Vue.component('detail-component', require('./components/DetailUserComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
