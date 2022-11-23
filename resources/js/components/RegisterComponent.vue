@@ -20,48 +20,45 @@
                                         <input
                                             type="text"
                                             class="form-control form-control-user"
-                                            id="exampleFirstName"
-                                            placeholder="First Name"
+                                            name="username"
+                                            v-model="form.username"
+                                            placeholder="User Name"
                                         />
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input
-                                            type="text"
+                                            type="email"
+                                            name="email"
+                                            v-model="form.email"
                                             class="form-control form-control-user"
-                                            id="exampleLastName"
-                                            placeholder="Last Name"
+                                            placeholder="Email Address"
                                         />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input
-                                        type="email"
+                                    <textarea
+                                        type="text"
                                         class="form-control form-control-user"
-                                        id="exampleInputEmail"
-                                        placeholder="Email Address"
-                                    />
+                                        name="hobbies"
+                                        v-model="form.hobbies"
+                                        placeholder="Hobbies"
+                                    ></textarea>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <div class="col-12">
                                         <input
                                             type="password"
                                             class="form-control form-control-user"
-                                            id="exampleInputPassword"
+                                            name="password"
+                                            v-model="form.password"
                                             placeholder="Password"
-                                        />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input
-                                            type="password"
-                                            class="form-control form-control-user"
-                                            id="exampleRepeatPassword"
-                                            placeholder="Repeat Password"
                                         />
                                     </div>
                                 </div>
                                 <a
-                                    href="login.html"
+                                    href="#"
                                     class="btn btn-primary btn-user btn-block"
+                                    @click="registerAccount"
                                 >
                                     Register Account
                                 </a>
@@ -88,7 +85,7 @@
                                 >
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.html"
+                                <a class="small" href="/login"
                                     >Already have an account? Login!</a
                                 >
                             </div>
@@ -102,8 +99,31 @@
 
 <script>
 export default {
-    mounted() {
-        console.log("Component mounted.");
+    data() {
+        return {
+            form: {
+                username: "",
+                email: "",
+                password: "",
+                hobbies: "",
+            },
+        };
+    },
+    mounted() {},
+    computed: {},
+    watch: {},
+    methods: {
+        registerAccount() {
+            this.getUser(this.form);
+        },
+        async getUser(form) {
+            try {
+                const response = await axios.post("/api/register", form);
+                console.log(response);
+            } catch (error) {
+                console.error(error);
+            }
+        },
     },
 };
 </script>
