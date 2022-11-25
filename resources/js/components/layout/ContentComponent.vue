@@ -83,7 +83,7 @@
                                             <td>{{ user.updated_at }}</td>
                                             <td>
                                                 <a
-                                                    href="#"
+                                                    :href="'/user/'+user.username"
                                                     class="btn btn-info btn-circle btn-sm"
                                                 >
                                                     <i

@@ -33,7 +33,6 @@ class UserController extends Controller
 
     public function update(UserRequest $request, $username)
     {
-        return $request;
         $input = $request->getAttributes();
         $users = $this->userRepository->updateWhere(['username' => $username], $input);
         return response()->json(['data' => $users], Response::HTTP_OK);

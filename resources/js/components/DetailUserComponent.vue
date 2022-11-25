@@ -433,7 +433,6 @@ export default {
     watch: {},
     methods: {
         save() {
-            console.log(1111);
             this.updateUser(this.form)
         },
         async updateUser(form) {
